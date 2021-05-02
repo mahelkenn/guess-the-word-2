@@ -33,6 +33,16 @@ circles(word);
 guessButton.addEventListener("click", function (e) {
     e.preventDefault();
     let letterInput = textInput.value;
-    console.log(letterInput);
     textInput.value = "";
+    validate(letterInput);
 });
+
+const validate = function(letterInput) {
+    const acceptedLetter = /[a-zA-Z]/;
+    if (letterInput === "") {
+        console.log("Think you forgot to enter something");
+    }
+    else if (letterInput.length > 1) {
+        console.log("Please enter a single letter.");
+    }
+}
