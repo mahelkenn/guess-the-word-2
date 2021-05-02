@@ -18,12 +18,14 @@ const newGameButton = document.querySelector(".play-again")
 
 /* Word selected for testing */
 const word = "magnolia";
+/* Array of guessed letters */
+const guessedLetters = [];
 
 /* Function to replace letters of word with circles */
 const circles = function (word) {
     let output = [];
     for (let letter in word) {
-        output.push("●")
+        output.push("●");
     }
     wordInProgress.innerText = output.join("");
 };
@@ -36,7 +38,9 @@ guessButton.addEventListener("click", function (e) {
     textInput.value = "";
     message.innerText = "";
     const letter = validate(letterInput);
-    console.log(letter);
+    if (letter !== undefined) {
+        makeGuess(letter);
+    }
 });
 
 const validate = function(letterInput) {
@@ -52,5 +56,16 @@ const validate = function(letterInput) {
     }
     else {
         message.innerText = "Please enter a letter."
+    }
+}
+
+const makeGuess = function (letter) {
+    const upper = letter.toUpperCase();
+    if (guessedLetters.includes(upper)) {
+        message.innerText = "You've already guessed that letter!";
+    }
+    else {
+        guessedLetters.push(upper);
+        console.log(guessedLetters);
     }
 }
