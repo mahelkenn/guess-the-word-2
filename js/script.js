@@ -73,8 +73,8 @@ const makeGuess = function (letter) {
     }
     else {
         guessedLetters.push(upper);
-        console.log(guessedLetters);
         displayLettersGuessed();
+        updateWord(guessedLetters);
     }
 }
 
@@ -86,3 +86,19 @@ const displayLettersGuessed = function () {
         lettersList.append(li)
     }
 } 
+
+const updateWord = function (guessedLetters) {
+    let wordUpper = word.toUpperCase();
+    const wordArray = wordUpper.split("");
+    let output = [];
+    for (let letter of wordArray) {
+        if (guessedLetters.includes(letter)) {
+            output.push(letter);
+        }
+        else {
+            output.push("●");
+        }
+        wordInProgress.innerText = output.join("");
+    }
+
+}
