@@ -99,6 +99,14 @@ const updateWord = function (guessedLetters) {
             output.push("●");
         }
         wordInProgress.innerText = output.join("");
+        wonGame();
     }
+}
 
+const wonGame = function () {
+    let wordUpper = word.toUpperCase();
+    if (wordInProgress.innerText === wordUpper) {
+        message.classList.add("win");
+        message.innerHTML = '<p class="highlight">You guessed correct the word! Congrats!</p>';
+    }
 }
