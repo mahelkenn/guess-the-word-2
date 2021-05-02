@@ -34,15 +34,23 @@ guessButton.addEventListener("click", function (e) {
     e.preventDefault();
     let letterInput = textInput.value;
     textInput.value = "";
-    validate(letterInput);
+    message.innerText = "";
+    const letter = validate(letterInput);
+    console.log(letter);
 });
 
 const validate = function(letterInput) {
     const acceptedLetter = /[a-zA-Z]/;
     if (letterInput === "") {
-        console.log("Think you forgot to enter something");
+        message.innerText = "You forgot to enter your letter!";
     }
     else if (letterInput.length > 1) {
-        console.log("Please enter a single letter.");
+        message.innerText = "Please enter a single letter.";
+    }
+    else if (letterInput.match(acceptedLetter)) {
+        return letterInput;
+    }
+    else {
+        message.innerText = "Please enter a letter."
     }
 }
