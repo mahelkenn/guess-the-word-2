@@ -80,8 +80,8 @@ const makeGuess = function (letter) {
 
 const displayLettersGuessed = function () {
     lettersList.innerHTML = "";
-    let li = document.createElement("li");
     for (let letter of guessedLetters) {
+        let li = document.createElement("li");
         li.innerText = letter;
         lettersList.append(li)
     }
